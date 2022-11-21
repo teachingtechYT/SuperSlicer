@@ -1,0 +1,9 @@
+#logs
+page:print:
+group:freq_settings_event:no_title:no_search:
+	line:
+		setting:simple:script:enum$none$None$sb$Support on build plate only only$ev$Everywhere:depends$supports_enable$support_buildplate_only:label$Supports:tooltip$Select what kind of support do you need:full_width:s_support_sla
+	end_line
+	line:
+		setting:simple:script:enum$none$None$bo$Below object$ao$Around object:depends$supports_enable$support_buildplate_only:label$Pad:tooltip$Select what kind of pad do you need:full_width:s_pad
+	end_line

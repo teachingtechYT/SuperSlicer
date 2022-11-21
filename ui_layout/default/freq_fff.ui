@@ -1,0 +1,12 @@
+#logs
+page:print:
+group:freq_settings_event:no_title:no_search:
+	line:
+		setting:simple:script:enum$none$None$bp$Support on build plate only$se$For support enforcers only$ev$Everywhere:depends$support_material$support_material_auto$support_material_buildplate_only:label$Supports:tooltip$Select what kind of support do you need:full_width:s_support_fff
+	end_line
+	line:
+#		setting:brim_width
+		setting:label$Infill:width$8:sidetext$  :fill_density
+		setting:simple:script:bool:depends$brim_width:label$Brim:tooltip$Set the brim. Will be set to 5mm if nothing was previously set.:s_brim
+		freq_purging_volumes
+	end_line

@@ -1,0 +1,515 @@
+#logs
+page:Perimeters & Shell:shell
+group:Vertical shells
+	setting:width$6:perimeters
+	setting:tags$Simple$Expert$SuSi:script:float:depends$perimeter_spacing$external_perimeter_spacing:label$Wall Thickness:tooltip$Change the perimeter extrusion widths to ensure that there is an exact number of perimeters for this wall thickness value. It won't put the perimeter width below the nozzle diameter, and up to double.\nNote that the value displayed is just a view of the current perimeter thickness, like the info text below. The number of perimeters used to compute this value is one loop, or the custom variable 'wall_thickness_lines' (advanced mode) if defined.\nIf the value is too low, it will revert the widths to the saved value.\nIf the value is set to 0, it will show 0.:s_wall_thickness
+	setting:spiral_vase
+	recommended_thin_wall_thickness_description
+group:Horizontal shells
+	line:Solid layers
+		setting:top_solid_layers
+		setting:label$Bottom:bottom_solid_layers
+	end_line
+	line:Minimum shell thickness
+		setting:top_solid_min_thickness
+		setting:bottom_solid_min_thickness
+	end_line
+	top_bottom_shell_thickness_explanation
+	setting:enforce_full_fill_volume
+group:Infill
+	line:Sparse infill pattern
+		setting:tags$Simple:label_width$0:label$_:fill_pattern
+		setting:tags$Simple:label_width$6:label$Density:width$8:sidetext_width$1:fill_density
+	end_line
+	setting:tags$Simple:label_width$20:label$Top infill pattern:top_fill_pattern
+	setting:tags$Simple:sidetext_width$0:label$Supporting dense layer:infill_dense
+group:Quality
+	line:Only one perimeter 
+		setting:label_width$8:label$On first layer:only_one_perimeter_first_layer
+		setting:label_width$10:label$On top surfaces:only_one_perimeter_top
+		setting:label$Minimum width:sidetext_width$7:min_width_top_surface
+	end_line
+	line:Extra perimeters
+		setting:label_width$8:extra_perimeters_overhangs
+		setting:label_width$10:extra_perimeters_odd_layers
+	end_line
+	line:Ensure vertical shell thickness
+		setting:label$_:ensure_vertical_shell_thickness
+		setting:solid_over_perimeters
+	end_line
+	line:Avoid crossing perimeters
+		setting:label$_:avoid_crossing_perimeters
+		setting:label_width$12:label$Not on first layer:avoid_crossing_not_first_layer
+		setting:sidetext_width$15:avoid_crossing_perimeters_max_detour
+	end_line
+	line:Overlapping external perimeter
+		setting:label$_:thin_perimeters
+		setting:label_width$12:label$Also for all perimeters:thin_perimeters_all
+	end_line
+	line:Thin walls
+		setting:label$_:thin_walls
+		setting:width$5:thin_walls_min_width
+		setting:width$5:thin_walls_overlap
+		setting:thin_walls_merge
+	end_line
+group:label_width$12:Overhangs
+	line:threshold for
+		setting:script:bool:advanced:depends$overhangs_width_speed$overhangs_width:label$_:label_width$0:tooltip$Simple widget to enable/disable the overhangs detection (using 55% and 75% for the two thresholds)\nUse the expert mode to get more detailled widgets:s_overhangs
+		setting:label$Bridge speed and fan:width$5:sidetext_width$0:overhangs_width_speed
+		setting:label_width$12:label$Bridge flow:width$5:overhangs_width
+	end_line
+	line:Extrusion direction
+		setting:sidetext_width$2:overhangs_reverse
+		setting:label_width$12:width$5:overhangs_reverse_threshold
+	end_line
+group:sidetext_width$5:Advanced
+	setting:width$25:no_perimeter_unsupported_algo
+	line:Gap Fill
+		setting:label$_:gap_fill_enabled
+		setting:width$5:gap_fill_last
+		setting:width$5:gap_fill_extension
+	end_line
+	line:Gap Fill threshold
+		setting:width$5:gap_fill_min_width
+		setting:width$5:gap_fill_max_width
+		setting:width$5:sidetext_width$6:gap_fill_min_area
+		setting:width$5:gap_fill_min_length
+	end_line
+	line:Seam
+		setting:tags$Simple$Advanced$Expert$Prusa$SuSi:script:enum$corners$Corners$nearest$Nearest$random$Random$aligned$Aligned$rear$Rear$custom$Custom:depends$seam_position$seam_angle_cost$seam_travel_cost:label$Seam position:label_width$12:sidetext_width$0:tooltip$Position of perimeters' starting points.\nCustom can be defined in Advanced or Expert mode. Cost-based settings let you choose the angle and travel cost. A high angle cost will place the seam where it can be hidden by a corner, the travel cost place the seam near the last position (often at the end of the previous infill).:s_seam_position
+#		setting:tags$Expert:label_width$12:sidetext_width$0:seam_position
+		setting:tags$Advanced$Expert$SuSi:width$3:sidetext_width$0:seam_angle_cost
+		setting:tags$Advanced$Expert$SuSi:width$3:sidetext_width$0:seam_travel_cost
+	end_line
+	line:One-loop perimeters
+		setting:sidetext_width$0:label$_:perimeter_loop
+		setting:label_width$5:label$Seam:perimeter_loop_seam
+	end_line
+	setting:perimeter_round_corners
+	line:Fuzzy skin (experimental)
+		setting:sidetext_width$1:label$_:fuzzy_skin
+		setting:width$6:sidetext_width$6:fuzzy_skin_thickness
+		setting:width$6:fuzzy_skin_point_dist
+	end_line
+group:External perimeter first
+	setting:label$Activate:external_perimeters_first
+	line:Apply on
+		setting:external_perimeters_nothole
+		setting:external_perimeters_hole
+	end_line
+	setting:external_perimeters_vase
+	setting:perimeter_bonding
+group:Arachne perimeter generator (variable width)
+	setting:perimeter_generator
+	line:Wall treshold
+		setting:wall_split_middle_threshold
+		setting:wall_add_middle_threshold
+	end_line
+	line:Wall Transition
+		setting:label$Angle:wall_transition_angle
+		setting:label$Distance Margin:wall_transition_filter_deviation
+		setting:label$Length:wall_transition_length
+	end_line
+	setting:wall_distribution_count
+	line:Min feature
+		setting:min_bead_width
+		setting:min_feature_size
+	end_line
+
+page:Slicing:layers
+group:Layer height
+	setting:layer_height
+	setting:first_layer_height
+group:Filtering
+	setting:resolution
+	setting:resolution_internal
+	setting:model_precision
+	setting:slice_closing_radius
+# gcode_resolution
+group:Modifying slices
+	line:Curve smoothing
+		setting:width$6:curve_smoothing_precision
+		setting:width$6:curve_smoothing_angle_convex
+		setting:width$6:curve_smoothing_angle_concave
+		setting:width$6:curve_smoothing_cutoff_dist
+	end_line
+	line:XY compensation
+		setting:width$6:xy_size_compensation
+		setting:width$6:xy_inner_size_compensation
+	end_line
+	line:XY First layer compensation
+		setting:width$6:first_layer_size_compensation
+		setting:width$6:first_layer_size_compensation_layers
+	end_line
+	line:Vertical Hole shrinking compensation
+		setting:width$6:hole_size_compensation
+		setting:width$6:hole_size_threshold
+	end_line
+	line:Convert round vertical holes to polyholes
+		setting:label$_:hole_to_polyhole
+		setting:sidetext_width$5:hole_to_polyhole_threshold
+		setting:hole_to_polyhole_twisted
+	end_line
+group:Other
+	setting:slicing_mode
+	setting:clip_multipart_objects
+	setting:allow_empty_layers
+
+page:Infill:infill
+group:title_width$0:Infill
+	line:_
+		setting:tags$Advanced$Expert$Prusa:label_left:label_width$6:label$Sparse:width$8:sidetext_width$1:fill_density
+		setting:tags$Advanced$Expert$Prusa:label_width$0:label$_:fill_pattern
+		setting:label$_:width$18:infill_connection
+	end_line
+	line:_
+		setting:label$Connection length:label_width$25:sidetext_width$7:width$12:infill_anchor_max
+		setting:label$Perimeter anchor:sidetext_width$7:width$12:infill_anchor
+		end_line
+	line:_
+		setting:label_left:label_width$20:label$Solid:solid_fill_pattern
+		setting:label$_:width$18:infill_connection_solid
+	end_line
+	line:_
+		setting:tags$Advanced$Expert$Prusa:label_left:label_width$20:label$Top:top_fill_pattern
+		setting:label$_:width$18:infill_connection_top
+	end_line
+	line:_
+		setting:label_left:label_width$20:label$Bottom:bottom_fill_pattern
+		setting:label$_:width$18:infill_connection_bottom
+	end_line
+	line:_
+		setting:label_left:label_width$20:label$Bridge:bridge_fill_pattern
+		setting:label$_:width$18:infill_connection_bridge
+	end_line
+group:Reducing printing time
+	setting:infill_every_layers
+	setting:infill_only_where_needed
+	line:Supporting dense layer
+		setting:tags$Advanced$Expert$SuSi:sidetext_width$0:label$_:infill_dense
+		setting:width$20:infill_dense_algo
+	end_line
+group:sidetext_width$5:Advanced
+	setting:solid_infill_every_layers
+	setting:solid_infill_below_area
+	line:Angle
+		setting:label_width$8:width$5:fill_angle
+		setting:label_width$6:width$5:bridge_angle
+		setting:label_width$6:width$5:label$increment:fill_angle_increment
+	end_line
+	line:Anchor solid infill by X mm
+		setting:label_width$8:width$5:external_infill_margin
+		setting:label_width$6:width$5:bridged_infill_margin
+	end_line
+	line:Only retract when crossing perimeters
+		setting:label_width$0:label$_:only_retract_when_crossing_perimeters
+		setting:enforce_retract_first_layer
+	end_line
+	setting:infill_first
+group:Advanced Infill options
+	line:Ironing infill pattern tuning
+		setting:label_width$8:width$5:fill_smooth_distribution
+		setting:label_width$26:label$Spacing between ironing lines:width$5:sidetext_width$7:fill_smooth_width
+	end_line
+group:title_width$19:Ironing post-process (This will go on top of infills and perimeters)
+	line:Enable ironing post-process
+		setting:label$_:sidetext_width$0:ironing
+		setting:label$On:ironing_type
+	end_line
+	line:Tuning ironing
+		setting:label_width$9:width$5:ironing_flowrate
+		setting:label_width$26:width$5:ironing_spacing
+		setting:label_width$26:width$5:ironing_angle
+	end_line
+
+page:Skirt & Brim:skirt+brim
+group:Skirt
+	setting:tags$Advanced$Expert$Prusa:skirts
+	line:Distance
+		setting:skirt_distance
+		setting:label$from brim:skirt_distance_from_brim
+	end_line
+	setting:skirt_height
+	setting:width$8::draft_shield
+	setting:skirt_brim
+	setting:min_skirt_length
+group:Brim
+	setting:tags$Advanced$Expert$Prusa:brim_width
+	setting:brim_inside_holes
+	setting:brim_width_interior
+	line:Brim ears
+		setting:tags$Advanced$Expert$Prusa:label$_:sidetext_width$0:brim_ears
+		setting:width$3:sidetext_width$1:brim_ears_max_angle
+		setting:width$3:sidetext_width$3:brim_ears_detection_length
+		setting:brim_ears_pattern
+	end_line
+	setting:brim_separation
+
+page:Support material:support
+
+group:Support material
+	setting:tags$Advanced$Expert$Prusa:support_material
+	setting:tags$Advanced$Expert$Prusa:support_material_auto
+	setting:support_material_threshold
+	setting:support_material_enforce_layers
+group:Raft
+	line:Layers
+		setting:label$Count:raft_layers
+		setting:label$Layer height:raft_layer_height
+		setting:label$Interface layer height:raft_interface_layer_height
+	end_line
+	line:First layer
+		setting:raft_first_layer_density
+		setting:raft_first_layer_expansion
+	end_line
+	line:Advanced
+		setting:raft_contact_distance
+		setting:raft_expansion
+	end_line
+group:Options for support material and raft
+	setting:support_material_style
+	setting:support_material_layer_height
+	line:Z-offset
+		setting:width$13:support_material_contact_distance_type
+		setting:width$6:support_material_contact_distance
+		setting:width$6:support_material_bottom_contact_distance
+	end_line
+	line:Pattern
+		setting:label$_:support_material_pattern
+		setting:label$Spacing:support_material_spacing
+		setting:label$Angle:support_material_angle
+	end_line
+	setting:support_material_with_sheath
+	setting:support_material_closing_radius
+	setting:tags$Advanced$Expert$Prusa:support_material_buildplate_only
+	setting:sidetext_width$7:support_material_xy_spacing
+	setting:dont_support_bridges
+	setting:support_material_synchronize_layers
+group:Options for support material interface
+	setting:support_material_interface_layer_height
+	line:Pattern
+		setting:support_material_interface_pattern
+		setting:label$Interface spacing:support_material_interface_spacing
+	end_line
+	line:Pattern Angle
+		setting:label$_:support_material_interface_angle
+		setting:label$Increment:support_material_interface_angle_increment
+	end_line
+	line:Layer count
+		setting:support_material_interface_layers
+		setting:support_material_bottom_interface_layers
+	end_line
+	setting:support_material_interface_contact_loops
+
+page:Speed:time
+group:label_width$8:sidetext_width$7:Speed for print moves
+	line:Default speed
+		setting:width$4:sidetext_width$15:default_speed
+	line:Perimeter speed
+		setting:width$4:perimeter_speed
+		setting:width$4:external_perimeter_speed
+	line:Infill speed
+		setting:width$4:solid_infill_speed
+		setting:width$4:infill_speed
+		setting:width$4:top_solid_infill_speed
+	line:Support speed
+		setting:width$4:support_material_speed
+		setting:width$4:support_material_interface_speed
+		setting:width$4:brim_speed
+	line:Bridge speed
+		setting:width$4:bridge_speed
+		setting:width$4:bridge_speed_internal
+		setting:width$4:overhangs_speed
+	line:Gap fill speed
+		setting:width$4:label$maximum speed:gap_fill_speed
+		setting:width$4:label$Cap with:sidetext$% of perimeter flow:sidetext_width$20:gap_fill_flow_match_perimeter
+	line:Other speed
+		setting:width$4:thin_walls_speed
+		setting:width$4:ironing_speed
+group:Speed for non-print moves
+	line:Travel speed
+		setting:label$xy:travel_speed
+		setting:label$z:travel_speed_z
+	end_line
+group:sidetext_width$7:Modifiers
+	line:First layer speed
+		setting:label_width$8:width$4:first_layer_min_speed
+		setting:label_width$8:width$4:first_layer_speed
+		setting:label_width$8:width$4:first_layer_infill_speed
+		setting:label_width$8:width$4:label$Over raft:first_layer_speed_over_raft
+	end_line
+	line:Small perimeter speed
+		setting:label_width$8:width$4:small_perimeter_speed
+		setting:label_width$8:width$4:small_perimeter_min_length
+		setting:label_width$8:width$4:small_perimeter_max_length
+	end_line
+group:Autospeed (advanced)
+	setting:max_volumetric_speed
+	setting:max_print_speed
+group:label_width$9:sidetext_width$8:Acceleration control (advanced)
+	line:Default acceleration
+		setting:width$4:default_acceleration
+	line:Perimeter acceleration
+		setting:width$4:perimeter_acceleration
+		setting:width$4:external_perimeter_acceleration
+	line:Infill acceleration
+		setting:width$4:solid_infill_acceleration
+		setting:width$4:infill_acceleration
+		setting:width$4:top_solid_infill_acceleration
+	line:Support acceleration
+		setting:width$4:support_material_acceleration
+		setting:width$4:support_material_interface_acceleration
+		setting:width$4:brim_acceleration
+	line:Bridge acceleration
+		setting:width$4:bridge_acceleration
+		setting:width$4:bridge_internal_acceleration
+		setting:width$4:overhangs_acceleration
+	line:Other extrusions acceleration
+		setting:width$4:gap_fill_acceleration
+		setting:width$4:thin_walls_acceleration
+		setting:width$4:ironing_acceleration
+	line:Travel acceleration
+		setting:width$4:travel_acceleration
+		setting:width$4:travel_deceleration_use_target
+	line:First layer acceleration
+		setting:width$4:first_layer_acceleration
+		setting:label_width$35:width$4:first_layer_acceleration_over_raft
+	end_line
+
+page:Width & Flow:width
+group:Extrusion width
+	line:default
+		setting:sidetext_width$10:label$width:extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:extrusion_spacing
+	end_line
+	line:first layer
+		setting:sidetext_width$10:label$width:first_layer_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:first_layer_extrusion_spacing
+	end_line
+	line:perimeter
+		setting:sidetext_width$10:label$width:perimeter_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:perimeter_extrusion_spacing
+	end_line
+	line:external perimeter
+		setting:sidetext_width$10:label$width:external_perimeter_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$width&spacing combo:external_perimeter_extrusion_spacing
+	end_line
+	line:infill
+		setting:sidetext_width$10:label$width:infill_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:infill_extrusion_spacing
+	end_line
+	line:solid infill
+		setting:sidetext_width$10:label$width:solid_infill_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:solid_infill_extrusion_spacing
+	end_line
+	line:top infill
+		setting:sidetext_width$10:label$width:top_infill_extrusion_width
+		setting:sidetext_width$10:label_width$15:label$spacing:top_infill_extrusion_spacing
+	end_line
+	line:support material
+		setting:sidetext_width$10:label$width:support_material_extrusion_width
+	end_line
+	line:skirt
+		setting:sidetext_width$10:label$width:skirt_extrusion_width
+	end_line
+	recommended_extrusion_width_description
+group:Overlap
+	line:Perimeter overlap
+		setting:label_width$7:label$Default:perimeter_overlap
+		setting:label_width$7:label$External:external_perimeter_overlap
+		setting:label_width$7:label$Gap Fill:gap_fill_overlap
+	end_line
+	setting:width$4:solid_infill_overlap
+	line:Bridge lines density
+		setting:label_width$7:bridge_overlap_min
+		setting:label_width$7:bridge_overlap
+	end_line
+	setting:width$4:sidetext_width$7:infill_overlap
+group:sidetext_width$2:Flow
+	line:Flow ratio
+		setting:bridge_flow_ratio
+		setting:over_bridge_flow_ratio
+		setting:fill_top_flow_ratio
+		setting:first_layer_flow_ratio
+	end_line
+	line:Bridge type
+		setting:bridge_type
+		setting:script:bool:advanced:depends$bridge_type$bridge_overlap$layer_height$nozzle_diameter:label$ Simulate Prusa 'no thick bridge':label_width$0:tooltip$Change the bridge type and the bridge overlap to compute the same extrusions as when the PrusaSlicer 'thick bridge' isn't selected.\nAs long as it's selected, it will modify them.\nUnselect it to deactivate this enforcement.:s_not_thick_bridge
+	end_line
+	setting:external_perimeter_cut_corners
+page:Multiple extruders:funnel
+group:Extruders
+	setting:perimeter_extruder
+	setting:infill_extruder
+	setting:solid_infill_extruder
+	setting:support_material_extruder
+	setting:support_material_interface_extruder
+group:Ooze prevention
+	setting:ooze_prevention
+	setting:standby_temperature_delta
+group:Wipe tower
+	setting:wipe_tower
+	line:Wipe tower position
+		setting:label_width$3:width$5:sidetext$mm:wipe_tower_x
+		setting:label_width$3:width$5:sidetext$mm:wipe_tower_y
+	end_line
+	setting:wipe_tower_brim_width
+	setting:wipe_tower_width
+	setting:wipe_tower_rotation_angle
+	setting:wipe_tower_bridging
+	setting:wipe_tower_no_sparse_layers
+	setting:single_extruder_multi_material_priming
+group:Advanced
+	setting:interface_shells
+	setting:mmu_segmented_region_max_width
+
+page:Output options:output+page_white
+group:Plater
+	setting:duplicate_distance
+group:Sequential printing
+	setting:tags$Advanced$Expert$Prusa:complete_objects
+	setting:complete_objects_one_skirt
+	setting:complete_objects_one_brim
+	setting:complete_objects_sort
+	line:Extruder clearance (mm)
+		setting:width$6:extruder_clearance_radius
+		setting:width$6:extruder_clearance_height
+	end_line
+group:Output file
+	setting:gcode_comments
+	setting:gcode_label_objects
+	setting:full_width:output_filename_format
+group:Other
+    gcode_substitutions
+group:Post-processing script
+	setting:full_width:height$5:post_process
+	post_process_explanation
+group:Post-processing milling
+	setting:milling_post_process
+	setting:milling_extra_size
+	setting:milling_after_z
+	setting:milling_speed
+	
+page:Notes:note
+group:no_title:Notes
+	setting:full_width:height$25:notes
+group:no_title:Custom variables
+	setting:full_width:height$15:print_custom_variables
+
+page:Dependencies:wrench
+group:Profile dependencies
+	setting:compatible_printers
+	setting:full_width:color:compatible_printers_condition
+	parent_preset_description
+	
+page:Support & Other:wrench
+group:Support Material
+	setting:tags$Simple:support_material
+	setting:tags$Simple:support_material_auto
+	setting:tags$Simple:support_material_buildplate_only
+group:Skirt & Brim
+	setting:tags$Simple:skirts
+	setting:tags$Simple:brim_width
+	setting:tags$Simple:sidetext_width$0:brim_ears
+group:Sequential printing
+	setting:tags$Simple:complete_objects
